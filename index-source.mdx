@@ -1,0 +1,280 @@
+import { Cite, Image, Notes, Quote, BlockQuote } from "spectacle";
+import { DarkSlide, CodeSlide } from "./slides";
+import IAMComponent from "./iam-component";
+
+export default DefaultSlide;
+
+# Transform The Future 🌌 🚀
+
+###### Babel-Plugin-Macros
+
+<Notes>Welcome</Notes>
+
+---
+
+<IAMComponent />
+
+---
+
+export default DefaultSlide;
+
+🔢 ~~Marcos~~ Macros
+
+🌊 Usefulness
+
+🔨 Exapaded Use
+
+🚀 Future
+
+<Notes>
+- Macros: bit about them, and the problem it sets out to solve
+
+- Uses in other languages
+
+- Exapanded use in JS
+
+-
+
+</Notes>
+
+---
+
+##### Macros
+
+<BlockQuote>
+  <Quote style={{ color: "black" }}>
+    Fundamentally, macros are a way of writing code that writes other code,
+    which is known as metaprogramming.{" "}
+  </Quote>
+  <Cite>best definition i could fine</Cite>
+</BlockQuote>
+
+😪
+
+<Notes>
+
+- macro is going to happen at compile time. where a function is going to happen at run time.
+
+- code that writes code. 🤔 This is less readable, understandable, and maintainable then general functions.
+
+- tons of languages use macros
+
+- Haskell, C, Rust, LISP
+
+</Notes>
+
+---
+
+export default CodeSlide;
+
+```C
+#include <stdio.h>
+
+#define PrintExpr(x) (printf("%s = %d\n", #x, (x)))
+
+int main(int argc, char **argv)
+{
+    PrintExpr(2+2);
+    return 0;
+}
+```
+
+Output 😱
+
+```bash
+2 + 2 = 4
+```
+
+<Notes>
+  Here C has 3 macros 1 to include the header file like an 'import' 2 to define
+  a function 'PrintExpr' 3 in the function to refer to the value passed into
+  that function
+
+Without using a macro, there is no way to capture the text string "2+2" so we can print it.
+
+</Notes>
+
+---
+
+# Cool 😎
+
+What's this got to do with me ?
+
+<img width="420px" src="compiling.png" />
+
+<Notes>
+
+- used to want for npm install
+- now we wait for transpile / bundling
+
+</Notes>
+
+---
+
+# Babel compile
+
+```JS
+{
+  "presets": ["react", "es2015", "stage-0"],
+
+  "plugins": [
+    "transform-runtime",
+    "add-module-exports",
+    "transform-decorators-legacy",
+    "transform-react-display-name"
+  ],
+
+  "env": {
+    "development": {
+      "plugins": [
+        "typecheck",
+        ["react-transform", {
+            "transforms": [{
+                "transform": "react-transform-catch-errors",
+                "imports": ["react", "redbox-react"]
+              }
+            ]
+        }]
+      ]
+    }
+  }
+}
+```
+
+<Notes>
+
+- And these things are amazing!!!!
+- Transform Plugins
+- Experimental
+- Minification
+- Syntax Plugins
+- Plugim Ordering **THIS MATTERS**
+- Plugin Options
+
+**BUT THERE ARE SOME GACHATS**
+
+</Notes>
+
+---
+
+# Downsides
+
+😵 Confusion
+🌎 Globally
+⚔ Conflict
+
+<Notes>
+
+- They can lead to _confusion_ because when looking at code in a project, you might not know that there's a plugin transforming that code.
+- They have to be _globally configured_ or configured out-of-band (in a .babelrc or webpack config).
+- They can _conflict_ in very confusing ways due to the fact that all babel plugins run simultaneously (on a single walk of Babel's AST).
+
+</Notes>
+
+---
+
+# ZERO CONFIG
+
+<img width="420px" src="zero-cool.png" />
+
+<Notes>
+
+- Can we have all those awesome features and mitigate these painpoints?
+- Canwe get that with zero configurbility?
+
+</Notes>
+
+---
+
+Macros to the rescue 🦹‍♀️🦸‍♀️
+
+<Notes>
+  - These are to painpoint that babel-plugin-macros sets out to solve
+</Notes>
+
+---
+
+# In Action
+
+[idx](https://github.com/dralletje/idx.macro)
+
+```js
+const fiends_of_friends =
+  props.user == null
+    ? props.user
+    : props.user.friends == null
+    ? props.user.friends
+    : props.user.friends[0] == null
+    ? props.user.friends[0]
+    : props.user.friends[0].friends;
+```
+
+---
+
+🚀 👩🏼‍🚀 👨🏼‍🚀
+
+Pushing it further.
+
+---
+
+```JS
+type User = {
+  user: ?{
+    name: string,
+    friends: ?Array<User>,
+  }
+};
+
+props.user &&
+props.user.friends &&
+props.user.friends[0] &&
+props.user.friends[0].friends
+
+```
+
+---
+
+```js
+import idx from "idx.macro";
+const friends_of_friends = idx(props, _ => _.user.friends[0].friends);
+```
+
+---
+
+#### JavaScript Language Extentions
+
+```js
+//@['optional-chaining']
+
+const friends_of_friends = user.?friends[0]?.friends;
+
+
+
+```
+
+---
+
+```js
+//@['pipe-operator']
+let result = exclaim(capitalize(doubleSay("hello")));
+result; //=> "Hello, hello!"
+
+//Now with pipes
+let result = "hello" |> doubleSay |> capitalize |> exclaim;
+result; //=> "Hello, hello!"
+```
+
+<Notes>
+
+- something like pragma in Haskell
+- declared at the top of any used file, like imports, so you always know
+
+- GHC supports several pragmas, or instructions to the compiler placed in the source code. Pragmas don't normally affect the meaning of the program, but they might affect the efficiency of the generated code.
+
+</Notes>
+
+---
+
+# Thank you USAA
+
+## 🎆

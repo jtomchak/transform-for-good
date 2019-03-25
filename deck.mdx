@@ -1,23 +1,87 @@
-import { Head, Notes } from 'mdx-deck'
+import { Head, Notes, Image } from "mdx-deck";
 
-export { theme } from './theme'
+import { FullScreenCode, Split, SplitRight } from "mdx-deck/layouts";
+export { dark as DarkTheme } from "mdx-deck/themes";
+export { theme } from "./theme";
+
+import { CodeDemo } from "./components/code-demo";
 
 <Head>
   <title>Presentation Title</title>
-</Head>
+</Head>;
 
-# Hello
+# Transform The Future 🌌 🚀
+
+###### Babel-Plugin-Macros
+
+<Notes>Welcome</Notes>
 
 ---
 
-## Edit this file
+<h3>What we're gonna cover</h3>
 
-To create your presentation
+<div style={{ fontSize: 40, textAlign: "left" }}>
+  <ul style={{ listStyleType: "none" }}>
+    <li>
+      🔢 <span style={{ textDecoration: "line-through" }}> Marcos </span>
+      Macros
+    </li>
+    <li>🌊 Usefulness</li>
+    <li>🔨 Exapaded Use</li>
+    <li>🚀 Future</li>
+  </ul>
+</div>
 
 <Notes>
-Create speaker notes with the Notes component
+- Macros: bit about them, and the problem it sets out to solve
+
+- Uses in other languages
+
+- Exapanded use in JS
+
+-
+
 </Notes>
 
 ---
 
-<https://github.com/jxnblk/mdx-deck>
+##### Macros
+
+> Fundamentally, macros are a way of writing code that writes other code, which is known as metaprogramming.
+
+😪😴
+
+<Notes>
+
+- macro is going to happen at compile time. where a function is going to happen at run time.
+
+- code that writes code. 🤔 This is less readable, understandable, and maintainable then general functions.
+
+- tons of languages use macros
+
+- Haskell, C, Rust, LISP
+
+</Notes>
+
+---
+
+<CodeDemo language="c" />
+
+---
+
+Output 😱
+
+```bash
+2 + 2 = 4
+```
+
+<Notes>
+  Here C has 3 macros 1 to include the header file like an 'import' 2 to define
+  a function 'PrintExpr' 3 in the function to refer to the value passed into
+  that function
+
+Without using a macro, there is no way to capture the text string "2+2" so we can print it.
+
+</Notes>
+
+---
