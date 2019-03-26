@@ -4,7 +4,8 @@ import { FullScreenCode, Split, SplitRight } from "mdx-deck/layouts";
 export { dark as DarkTheme } from "mdx-deck/themes";
 export { theme } from "./theme";
 
-import { CodeDemo } from "./components/code-demo";
+import { CMacro } from "./components/c-macro";
+import { BabelConfig } from "./components/babel-config";
 
 <Head>
   <title>Presentation Title</title>
@@ -53,7 +54,7 @@ import { CodeDemo } from "./components/code-demo";
 
 <Notes>
 
-- macro is going to happen at compile time. where a function is going to happen at run time.
+- macros are going to happen at compile time. where a function is going to happen at run time.
 
 - code that writes code. 🤔 This is less readable, understandable, and maintainable then general functions.
 
@@ -65,22 +66,56 @@ import { CodeDemo } from "./components/code-demo";
 
 ---
 
-<CodeDemo language="c" />
-
----
-
-Output 😱
-
-```bash
-2 + 2 = 4
-```
+<CMacro />
 
 <Notes>
-  Here C has 3 macros 1 to include the header file like an 'import' 2 to define
-  a function 'PrintExpr' 3 in the function to refer to the value passed into
+  Here C has 3 macros 1 to include the 
+  1. header file like an 'import' 
+  2 to define
+  a function 'PrintExpr' 
+  3 in the function to refer to the value passed into
   that function
 
 Without using a macro, there is no way to capture the text string "2+2" so we can print it.
+
+</Notes>
+
+---
+
+# Cool 😎
+
+What's this got to do with JavaScript ?
+
+<Image
+  style={{ width: "400px", height: "400px", display: "inline-block" }}
+  src="./assets/compiling.png"
+/>
+
+<Notes>
+
+- used to wait for npm install
+- now we wait for transpile / bundling
+- let's make the most of that effort
+
+</Notes>
+
+---
+
+# Babel compile ♥
+
+<BabelConfig />
+
+<Notes>
+
+- And these things are amazing!!!!
+- Transform Plugins
+- Experimental
+- Minification
+- Syntax Plugins
+- Plugim Ordering **THIS MATTERS**
+- Plugin Options
+
+**BUT THERE ARE SOME GACHATS**
 
 </Notes>
 

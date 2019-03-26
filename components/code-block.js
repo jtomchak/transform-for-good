@@ -1,14 +1,11 @@
-import React from "react";
-import Prism from "prismjs;
-import "../css/prism.css";
-import { UnControlled as CodeMirror } from "react-codemirror2";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-export const CodeBlock = ({ children, options = {}, style, ...props }) => (
-  <div style={{ fontSize: 18, overflow: "scroll", ...style }}>
-    <pre>
-        <code>
-            {children}
-        </code>
-    </pre>
-  </div>
-);
+export const CodeBlock = ({ code, language, ...props }) => {
+  return (
+    <SyntaxHighlighter language={language} style={solarizedlight}>
+      {code}
+    </SyntaxHighlighter>
+  );
+};
