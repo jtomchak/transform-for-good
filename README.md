@@ -4,17 +4,17 @@
 
 - bit of history
   > Macros can be used to make tasks less repetitive by representing a complicated sequence of keystrokes, mouse movements, commands, or other types of input. In computer programming, macros are a tool that allows a developer to re-use code.
-- best explianation i have found so far
+- best explianation I have found so far
   > Fundamentally, macros are a way of writing code that writes other code, which is known as metaprogramming.
   > [rust docs](https://doc.rust-lang.org/1.30.0/book/second-edition/appendix-04-macros.html?highlight=macros#the-future-of-macros)
-- macro is going to happen at compile time. where a function is going to happen at run time.
-- code that writes code. 🤔 This is less readable, understandable, and maintainable then general functions.
+- macro is going to happen at compile time, where a function is going to happen at run time.
+- code that writes code. 🤔 This is less readable, understandable, and maintainable than general functions.
 
 ### Two types of macros
 
-1. Declaritive w/ general metaprogramming
+1. Declarative w/ general metaprogramming
    - Matching on patterns and replacing code
-1. Prodecural more like functions
+1. Procedural more like functions
    - given input -> producing output (pure)
 
 - Problem babel macros sets to solve [solution](https://babeljs.io/blog/2017/09/11/zero-config-with-babel-macros)
@@ -29,15 +29,15 @@
     - zero config
     - importability
 
-> Explicit is often a better pattern than implicit because it requires others to understand how things are globally configured. This is in this spirit are babel-plugin-macros designed. However, some things do need to be implicit, and those kinds of babel plugins can't be turned into macros.
+> Explicit is often a better pattern than implicit because it requires others to understand how things are globally configured. In this spirit are babel-plugin-macros designed. However, some things do need to be implicit, and those kinds of babel plugins can't be turned into macros.
 
-- the idea of syntaic macro it's well suited for babel-plugin-macros
+- the idea of syntactic macro it's well suited for babel-plugin-macros
 
 ### What would it take to enable JS Macros to open stage proposals to actual implementations?
 
 [TC-39 Proposals](https://github.com/tc39/proposals#stage-1)
 
-### Possible JavaScript Language Extensions ?
+### Possible JavaScript Language Extensions?
 
 An extension language is a programming language interpreter offered by an application program, so that users can write macros or even full-fledged programs to extend the original application. Extension languages have a C interface (it is usually C, but it could be any other compiled language), and can be given access to the C data structures. Likewise, there are C routines to access the extension language data structures.
 ~ [GNU Language extensions](https://www.gnu.org/software/guile/docs/master/guile-tut.html/What-are-scripting-and-extension-languages.html)
@@ -76,8 +76,8 @@ Some examples of language extensions:
 
 There are two parts to the babel-plugin-macros API:
 
-The filename convention
-The function you export
+- The filename convention
+- The function you export
 
 ..adding the badge
 [![Babel Macro](https://img.shields.io/badge/babel--macro-%F0%9F%8E%A3-f5da55.svg?style=flat-square)](https://github.com/kentcdodds/babel-plugin-macros)
