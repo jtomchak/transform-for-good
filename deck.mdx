@@ -46,8 +46,10 @@ Welcome
 
 <Notes>
 - Macros: bit about them, and the problem it sets out to solve
-
-- Uses in other languages
+    - Uses in other languages
+- Usefulness: their usefulness in day to day development and reducing overhead
+- Exapaded Use: from macros to babel plugin macros and what we get out of it
+- Future: endless possibilities leveraging macros and more
 
 - Exapanded use in JS
 
@@ -59,9 +61,11 @@ Welcome
 
 ##### Macros
 
-> Fundamentally, macros are a way of writing code that writes other code, which is known as metaprogramming.
+> Fundamentally, macros are a way of writing code that writes other code,
 
-😪😴
+> like small code generators.
+
+🤔💭
 
 <Notes>
 
@@ -69,9 +73,11 @@ Welcome
 
 - code that writes code. 🤔 This is less readable, understandable, and maintainable then general functions.
 
+- executes "preprocessor statements" at compilation time, and the output of this execution forms part of the code that is compiled.
+
 - tons of languages use macros
 
-- Haskell, C, Rust, LISP
+- Examples include Scala, Rust, Elixir, Julia, Haskell, C, LISP
 
 </Notes>
 
@@ -91,12 +97,15 @@ int main(int argc, char **argv)
 ```
 
 <Notes>
-  Here C has 3 macros 1 to include the 
-  1. header file like an 'import' 
-  2 to define
-  a function 'PrintExpr' 
-  3 in the function to refer to the value passed into
-  that function
+Here C file with several macros:
+
+the '#' or 'hashtag' is a macro preprocessor that let's you define macros!
+
+1. include -> header file like an 'import'
+
+2 define -> to define a function 'PrintExpr'
+
+3 prefix value with x0's added to non-zero values.
 
 the mathmatical operation as a string !
 Without using a macro, there is no way to capture the text string "2+2" so we can print it.
@@ -115,57 +124,32 @@ What's this got to do with JavaScript ?
 />
 
 <Notes>
-  XKDC cartoons i've always loved
+- so now we have a quick understanding of a macro, and it's usefulness ...
+
+xkdc cartoon i've always loved
 
 - used to wait for npm install
-- now we wait for transpile / bundling
+- now we wait for compile and bundling
 - let's make the most of that effort
 
 </Notes>
 
 ---
 
-# Babel compile ♥
+# Babel Compile ♥
 
-```json
-{
-    "presets": ["react", "es2015", "stage-0"],
-
-    "plugins": [
-      "transform-runtime",
-      "add-module-exports",
-      "transform-decorators-legacy",
-      "transform-react-display-name"
-    ],
-
-    "env": {
-      "development": {
-        "plugins": [
-          "typecheck",
-          ["react-transform", {
-              "transforms": [{
-                  "transform": "react-transform-catch-errors",
-                  "imports": ["react", "redbox-react"]
-                }
-              ]
-          }]
-        ]
-      }
-    }
-  }
-`;
-
-```
+<BabelConfig />
 
 <Notes>
 
 - And these things are amazing!!!!
 - Transform Plugins
+- Modules
 - Experimental
 - Minification
 - Syntax Plugins
-- Plugim Ordering **THIS MATTERS**
-- Plugin Options
+- Pluging Ordering [**THIS MATTERS**](https://babeljs.io/docs/en/plugins#plugin-options)
+- Presets
 
 Do they run out of order?
 **BUT THERE ARE SOME GACHATS**
@@ -174,10 +158,16 @@ Do they run out of order?
 
 ---
 
-# Downsides
+# 🤕 Pain Points 💣
 
-<div style={{ fontSize: 40, textAlign: "left" }}>
-  <ul style={{ listStyleType: "none" }}>
+<div style={{ fontSize: 40 }}>
+  <ul
+    style={{
+      listStyleType: "none",
+      textAlign: "left",
+      display: "inline-block"
+    }}
+  >
     <li style={{ padding: "10px" }}>😵 Confusion</li>
     <li style={{ padding: "10px" }}>🌎 Globally</li>
     <li style={{ padding: "10px" }}>⚔ Conflict</li>
