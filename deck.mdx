@@ -120,7 +120,7 @@ What's this got to do with JavaScript ?
 
 <Image
   style={{ width: "400px", height: "400px", display: "inline-block" }}
-  src="./assets/compiling.png"
+  src={require("file-loader!./assets/compiling.png")}
 />
 
 <Notes>
@@ -187,7 +187,7 @@ Do they run out of order?
 # ZERO CONFIG
 
 <a href="https://babeljs.io/blog/2017/09/11/zero-config-with-babel-macros">
-  <img width="420px" src="./assets/zero-cool.png" />
+  <img width="420px" src={require("file-loader!./assets/zero-cool.png")} />
 </a>
 
 <Notes>
@@ -202,12 +202,20 @@ Do they run out of order?
 Macros to the rescue 🦹‍♀️🦸‍♀️
 
 <Notes>
-  - These are to painpoint that babel-plugin-macros sets out to solve
+
+- These are to painpoint that babel-plugin-macros sets out to solve
+- It's idea is to make babel code transformation more accessiable.
+
+- The import is there and used explicitly.
+- babel-plugin-macros needs to be added to your config, but only once,
+- No need to update ESLint config because it's explicit.
+- If you misconfigure babel-plugin-macros then you'll get a much more friendly compile time error message
+
 </Notes>
 
 ---
 
-##### [idx](https://github.com/dralletje/idx.macro) In Action
+##### [idx](https://github.com/dralletje/idx.macro) In Action 👾
 
 ```js
 const friends_of_friends =
@@ -219,6 +227,15 @@ const friends_of_friends =
     ? props.user.friends[0]
     : props.user.friends[0].friends;
 ```
+
+<Notes>
+
+- Nested object Checks
+- We've all been there
+- Looking for user friends whose in an array of friends of the current user ?
+- Monster ternary statements!
+
+</Notes>
 
 ---
 
@@ -237,21 +254,38 @@ props.user &&
   props.user.friends[0].friends;
 ```
 
+<Notes>
+
+- Here's the structure of the type we're traversing
+- We might use contional logic to keep checking
+  - "if the user exists, and has friends, and that friend has friends"
+
+</Notes>
+
 ---
 
 ```js
 import idx from "idx.macro";
+
 const friends_of_friends = idx(props, _ => _.user.friends[0].friends);
 ```
 
-<Notes>T-39 commity stage 0 or stage 1</Notes>
+<Notes>
+
+- idx is going to take 2 arguments, the object and a function that returns 1 or more of the nested member expressions of said object
+- and bc we're using it as a macro, there's no plugin config needed!
+- naming convention for macros is usually with a "\*.macro"
+
+- and that looks good, but maybe we code push it a bit further?
+
+</Notes>
 
 ---
 
 #### Babel Language Extentions
 
 ```js
-//@['optional-chaining']
+// #['optional-chaining']
 
 const friends_of_friends = user?.friends[0]?.friends;
 ```
@@ -261,7 +295,7 @@ const friends_of_friends = user?.friends[0]?.friends;
 export default FullScreenCode;
 
 ```js
-//@['pipe-operator']
+// #['pipe-operator']
 let result = exclaim(capitalize(doubleSay("hello")));
 result; //=> "Hello, hello!"
 
@@ -281,10 +315,25 @@ result; //=> "Hello, hello!"
 
 ---
 
-1. Code that continues to be readable
-2. Code that is easy for future us to reason about
+<div style={{ fontSize: 40 }}>
+  <ul
+    style={{
+      listStyleType: "none",
+      textAlign: "left",
+      display: "inline-block"
+    }}
+  >
+    <li style={{ padding: "10px" }}>📚 Code that continues to be readable</li>
+    <li style={{ padding: "10px" }}>
+      👨‍🚀 Code that is easy for future us to reason about
+    </li>
+  </ul>
+</div>
 
-Language Extenstions allow us to be more surgical with our decisions, and not paint our language with such a broad brush strokes.
+<Notes>
+  Language Extenstions allow us to be more surgical with our decisions, and not
+  paint our language with such a broad brush strokes.
+</Notes>
 
 ---
 
