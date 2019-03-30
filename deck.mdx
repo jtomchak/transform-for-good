@@ -1,15 +1,14 @@
 import { Head, Notes, Image } from "mdx-deck";
 
 import { FullScreenCode, Split, SplitRight } from "mdx-deck/layouts";
-export { dark as DarkTheme } from "mdx-deck/themes";
 import { syntaxHighlighterPrism } from "mdx-deck/themes";
-import customTheme from "./theme";
+
+import Layout from "./components/layout";
+export { default as theme } from "./theme";
 
 import { CMacro } from "./components/c-macro";
 import { BabelConfig } from "./components/babel-config";
 import { IDX } from "./components/idx-demo";
-
-export const themes = [syntaxHighlighterPrism, customTheme];
 
 <Head>
   <title>Transform The Future</title>
@@ -30,7 +29,9 @@ Welcome
 
 ---
 
-<h3>What we're gonna cover</h3>
+export default Layout;
+
+### What we're gonna cover
 
 <div style={{ fontSize: 40, textAlign: "left" }}>
   <ul style={{ listStyleType: "none" }}>
@@ -59,11 +60,9 @@ Welcome
 
 ---
 
-##### Macros
+#### Macros
 
-> Fundamentally, macros are a way of writing code that writes other code,
-
-> like small code generators.
+> Fundamentally, macros are a way of writing code that writes other code, like small code generators.
 
 🤔💭
 
@@ -136,7 +135,37 @@ xkdc cartoon i've always loved
 
 ---
 
-# Babel Compile ♥
+export default FullScreenCode;
+
+```
+{
+    "presets": ["react", "es2015", "stage-0"],
+
+    "plugins": [
+      "transform-runtime",
+      "add-module-exports",
+      "transform-decorators-legacy",
+      "transform-react-display-name"
+    ],
+
+    "env": {
+      "development": {
+        "plugins": [
+          "typecheck",
+          ["react-transform", {
+              "transforms": [{
+                  "transform": "react-transform-catch-errors",
+                  "imports": ["react", "redbox-react"]
+                }
+              ]
+          }]
+        ]
+      }
+    }
+  }
+```
+
+---
 
 <BabelConfig />
 

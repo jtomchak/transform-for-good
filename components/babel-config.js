@@ -30,7 +30,8 @@ const babelConfig = `
 
 export const BabelConfig = () => {
   return (
-    <div style={{ fontSize: 12 }}>
+    <div style={{ fontSize: 16 }}>
+      <h1>Babel Config ♥</h1>
       <CodeBlock language="json" code={babelConfig} />
     </div>
   );
