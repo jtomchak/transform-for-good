@@ -1,14 +1,10 @@
-import { Head, Notes, Image } from "mdx-deck";
-
-import { FullScreenCode, Split, SplitRight } from "mdx-deck/layouts";
-import { syntaxHighlighterPrism } from "mdx-deck/themes";
-
-import Layout from "./components/layout";
 export { default as theme } from "./theme";
 
-import { CMacro } from "./components/c-macro";
-import { BabelConfig } from "./components/babel-config";
-import { IDX } from "./components/idx-demo";
+import { Head, Notes, Image } from "mdx-deck";
+import { FullScreenCode, Split, SplitRight, Invert } from "mdx-deck/layouts";
+import { CodeSurfer } from "mdx-deck-code-surfer";
+
+import { Layout, CMacro } from "./components";
 
 <Head>
   <title>Transform The Future</title>
@@ -33,17 +29,10 @@ export default Layout;
 
 ### What we're gonna cover
 
-<div style={{ fontSize: 40, textAlign: "left" }}>
-  <ul style={{ listStyleType: "none" }}>
-    <li>
-      🔢 <span style={{ textDecoration: "line-through" }}> Marcos </span>
-      Macros
-    </li>
-    <li>🌊 Usefulness</li>
-    <li>🔨 Exapaded Use</li>
-    <li>🚀 Future</li>
-  </ul>
-</div>
+- 🔢 Macros
+- 🌊 Usefulness
+- 🔨 Exapaded Use
+- 🚀 Future
 
 <Notes>
 - Macros: bit about them, and the problem it sets out to solve
@@ -59,6 +48,8 @@ export default Layout;
 </Notes>
 
 ---
+
+export default Layout;
 
 #### Macros
 
@@ -82,18 +73,7 @@ export default Layout;
 
 ---
 
-```
-#include <stdio.h>
-#define PrintExpr(x) (printf("%s = %d", #x, (x)))
-
-int main(int argc, char **argv)
-{
-    PrintExpr(2+2);
-    return 0;
-}
-
-/* Output 😱 2 + 2 = 4 */
-```
+<CMacro />
 
 <Notes>
 Here C file with several macros:
@@ -135,11 +115,12 @@ xkdc cartoon i've always loved
 
 ---
 
-export default FullScreenCode;
+export default Layout;
 
 ```
+
 {
-    "presets": ["react", "es2015", "stage-0"],
+"presets": ["react", "es2015", "stage-0"],
 
     "plugins": [
       "transform-runtime",
@@ -162,12 +143,10 @@ export default FullScreenCode;
         ]
       }
     }
-  }
+
+}
+
 ```
-
----
-
-<BabelConfig />
 
 <Notes>
 
@@ -189,19 +168,9 @@ Do they run out of order?
 
 # 🤕 Pain Points 💣
 
-<div style={{ fontSize: 40 }}>
-  <ul
-    style={{
-      listStyleType: "none",
-      textAlign: "left",
-      display: "inline-block"
-    }}
-  >
-    <li style={{ padding: "10px" }}>😵 Confusion</li>
-    <li style={{ padding: "10px" }}>🌎 Globally</li>
-    <li style={{ padding: "10px" }}>⚔ Conflict</li>
-  </ul>
-</div>
+- 😵 Confusion
+- 🌎 Global
+- 😈 Conflict
 
 <Notes>
 

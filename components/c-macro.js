@@ -1,4 +1,5 @@
-import { CodeBlock } from "./code-block";
+import React from "react";
+import { CodeSurfer } from "mdx-deck-code-surfer";
 
 const cMacro = `
 #include <stdio.h>
@@ -13,10 +14,18 @@ int main(int argc, char **argv)
 /* Output 😱 2 + 2 = 4 */
 `;
 
-export const CMacro = () => {
+export default () => {
   return (
-    <div>
-      <CodeBlock language="c" code={cMacro} />
-    </div>
+    <CodeSurfer
+      title="C Macro Syntax"
+      code={cMacro}
+      lang="c"
+      showNumbers={false}
+      dark={false}
+      steps={[
+        { notes: "" },
+        { range: [1, 3], notes: "import & function declaration" }
+      ]}
+    />
   );
 };

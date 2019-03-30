@@ -1,3 +1,4 @@
+import React from "react";
 import { CodeBlock } from "./code-block";
 
 const babelConfig = `
