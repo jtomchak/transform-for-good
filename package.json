@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build deck.mdx",
+    "prebuild": "rimraf dist",
+    "build": "mdx-deck build deck.mdx --no-html",
     "help": "mdx-deck"
   },
   "devDependencies": {
@@ -15,9 +16,9 @@
     "react-codemirror2": "^5.1.0",
     "styled-components": "^4.2.0"
   },
+  "author": "Jesse Tomchak<jtomchak@gmail.com> (http://jessetomchak.com/)",
   "dependencies": {
     "codemirror": "^5.45.0",
-    "prismjs": "^1.16.0",
-    "react-syntax-highlighter": "^10.2.1"
+    "rimraf": "^2.6.3"
   }
 }

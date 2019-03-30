@@ -1,5 +1,5 @@
 import React from "react";
-import { CodeBlock } from "./code-block";
+import { CodeSurfer } from "mdx-deck-code-surfer";
 
 const babelConfig = `
 {
@@ -29,11 +29,22 @@ const babelConfig = `
   }
 `;
 
-export const BabelConfig = () => {
+export default () => {
   return (
-    <div style={{ fontSize: 16 }}>
-      <h1>Babel Config ♥</h1>
-      <CodeBlock language="json" code={babelConfig} />
-    </div>
+    <CodeSurfer
+      title="Babel Config ♥"
+      code={babelConfig}
+      lang="json"
+      showNumbers={false}
+      dark={false}
+      steps={[
+        { notes: "" },
+        { lines: [3], notes: "" },
+        { lines: [5], notes: "" },
+        { lines: [12], notes: "" },
+        { lines: [14], notes: "" },
+        {}
+      ]}
+    />
   );
 };

@@ -1,18 +1,20 @@
-import { CodeBlock } from "./code-block";
+import React from "react";
+import { CodeSurfer } from "mdx-deck-code-surfer";
 
 const friends = `
-const friends_of_friends =
-  props.user == null
-    ? props.user
-    : props.user.friends == null
-    ? props.user.friends
-    : props.user.friends[0] == null
-    ? props.user.friends[0]
-    : props.user.friends[0].friends;
+import idx from "idx.macro";
+
+const friends_of_friends = idx(props, _ => _.user.friends[0].friends);
 `;
 
-export const IDX = () => {
+export default () => {
   return (
-    <CodeBlock style={{ fontSize: "1rem" }} language="js" code={friends} />
+    <CodeSurfer
+      title="idx"
+      code={friends}
+      lang="javascript"
+      showNumbers={false}
+      dark={false}
+    />
   );
 };

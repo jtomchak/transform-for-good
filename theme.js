@@ -1,19 +1,14 @@
 // example theme.js
 import theme from "mdx-deck/themes";
-import { dark as DarkTheme } from "mdx-deck/themes";
-import { syntaxHighlighterPrism } from "mdx-deck/themes";
 
 export default {
-  ...DarkTheme,
+  ...theme,
   font: "Futura, sans-serif",
   h1: {
     textTransform: "uppercase",
     fontWeight: 600
   },
   monospace: '"Dank Mono", monospace',
-  prism: {
-    style: syntaxHighlighterPrism
-  },
   img: {
     maxWidth: "100%"
   },

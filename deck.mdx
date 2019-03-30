@@ -1,10 +1,10 @@
 export { default as theme } from "./theme";
 
 import { Head, Notes, Image } from "mdx-deck";
-import { FullScreenCode, Split, SplitRight, Invert } from "mdx-deck/layouts";
+import { Split, SplitRight, Invert } from "mdx-deck/layouts";
 import { CodeSurfer } from "mdx-deck-code-surfer";
 
-import { Layout, CMacro } from "./components";
+import { Layout, CMacro, BabelConfig, IDXDemo } from "./components";
 
 <Head>
   <title>Transform The Future</title>
@@ -93,6 +93,8 @@ Without using a macro, there is no way to capture the text string "2+2" so we ca
 
 ---
 
+export default Layout;
+
 # Cool 😎
 
 What's this got to do with JavaScript ?
@@ -117,36 +119,7 @@ xkdc cartoon i've always loved
 
 export default Layout;
 
-```
-
-{
-"presets": ["react", "es2015", "stage-0"],
-
-    "plugins": [
-      "transform-runtime",
-      "add-module-exports",
-      "transform-decorators-legacy",
-      "transform-react-display-name"
-    ],
-
-    "env": {
-      "development": {
-        "plugins": [
-          "typecheck",
-          ["react-transform", {
-              "transforms": [{
-                  "transform": "react-transform-catch-errors",
-                  "imports": ["react", "redbox-react"]
-                }
-              ]
-          }]
-        ]
-      }
-    }
-
-}
-
-```
+<BabelConfig />
 
 <Notes>
 
@@ -166,6 +139,8 @@ Do they run out of order?
 
 ---
 
+export default Layout;
+
 # 🤕 Pain Points 💣
 
 - 😵 Confusion
@@ -182,6 +157,8 @@ Do they run out of order?
 
 ---
 
+export default Layout;
+
 # ZERO CONFIG
 
 <a href="https://babeljs.io/blog/2017/09/11/zero-config-with-babel-macros">
@@ -197,7 +174,11 @@ Do they run out of order?
 
 ---
 
-Macros to the rescue 🦹‍♀️🦸‍♀️
+export default Layout;
+
+## Macros to the rescue
+
+# 🦹‍♀️🦸‍♀️
 
 <Notes>
 
@@ -213,9 +194,53 @@ Macros to the rescue 🦹‍♀️🦸‍♀️
 
 ---
 
-##### [idx](https://github.com/dralletje/idx.macro) In Action 👾
+<CodeSurfer
+  title="Nested Properties"
+  code={`
+type User = {
+  user: ?{
+    name: string,
+    friends: ?Array<User>
+  }
+};
+props.user &&
+  props.user.friends &&
+  props.user.friends[0] &&
+  props.user.friends[0].friends;
+  `}
+  lang="javascript"
+  showNumbers={false}
+  dark={true}
+/>
 
-```js
+<Notes>
+
+- Here's the structure of the type we're traversing
+- We might use contional logic to keep checking
+  - "if the user exists, and has friends, and that friend has friends"
+
+</Notes>
+
+---
+
+<IDXDemo />
+
+<Notes>
+
+- idx is going to take 2 arguments, the object and a function that returns 1 or more of the nested member expressions of said object
+- and bc we're using it as a macro, there's no plugin config needed!
+- naming convention for macros is usually with a "\*.macro"
+- doesn't this look just like a function? why don't I just use a function?
+
+- and that looks good, but maybe we code push it a bit further?
+
+</Notes>
+
+---
+
+<CodeSurfer
+  title="idx In Action 👾"
+  code={`
 const friends_of_friends =
   props.user == null
     ? props.user
@@ -224,7 +249,11 @@ const friends_of_friends =
     : props.user.friends[0] == null
     ? props.user.friends[0]
     : props.user.friends[0].friends;
-```
+  `}
+  lang="javascript"
+  showNumbers={false}
+  dark={true}
+/>
 
 <Notes>
 
@@ -237,70 +266,35 @@ const friends_of_friends =
 
 ---
 
-export default FullScreenCode;
-
-```js
-type User = {
-  user: ?{
-    name: string,
-    friends: ?Array<User>
-  }
-};
-props.user &&
-  props.user.friends &&
-  props.user.friends[0] &&
-  props.user.friends[0].friends;
-```
-
-<Notes>
-
-- Here's the structure of the type we're traversing
-- We might use contional logic to keep checking
-  - "if the user exists, and has friends, and that friend has friends"
-
-</Notes>
-
----
-
-```js
-import idx from "idx.macro";
-
-const friends_of_friends = idx(props, _ => _.user.friends[0].friends);
-```
-
-<Notes>
-
-- idx is going to take 2 arguments, the object and a function that returns 1 or more of the nested member expressions of said object
-- and bc we're using it as a macro, there's no plugin config needed!
-- naming convention for macros is usually with a "\*.macro"
-
-- and that looks good, but maybe we code push it a bit further?
-
-</Notes>
-
----
-
-#### Babel Language Extentions
-
-```js
+<CodeSurfer
+  title="Babel Language Extentions"
+  code={`
 // #['optional-chaining']
-
 const friends_of_friends = user?.friends[0]?.friends;
-```
+`}
+  lang="javascript"
+  showNumbers={false}
+  dark={true}
+/>
 
 ---
 
-export default FullScreenCode;
-
-```js
+<CodeSurfer
+  title="Babel Language Extentions"
+  code={`
 // #['pipe-operator']
 let result = exclaim(capitalize(doubleSay("hello")));
-result; //=> "Hello, hello!"
-
+//output => "Hello, hello!"
+.
+.
 //Now with pipes
 let result = "hello" |> doubleSay |> capitalize |> exclaim;
-result; //=> "Hello, hello!"
-```
+//=> "Hello, hello!"
+`}
+  lang="javascript"
+  showNumbers={false}
+  dark={true}
+/>
 
 <Notes>
 
@@ -312,6 +306,8 @@ result; //=> "Hello, hello!"
 </Notes>
 
 ---
+
+export default Layout;
 
 <div style={{ fontSize: 40 }}>
   <ul
@@ -334,6 +330,8 @@ result; //=> "Hello, hello!"
 </Notes>
 
 ---
+
+export default Layout;
 
 # Thank you
 
