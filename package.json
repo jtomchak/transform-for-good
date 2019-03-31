@@ -19,6 +19,7 @@
   "author": "Jesse Tomchak<jtomchak@gmail.com> (http://jessetomchak.com/)",
   "dependencies": {
     "codemirror": "^5.45.0",
+    "react-animations": "^1.0.0",
     "rimraf": "^2.6.3"
   }
 }

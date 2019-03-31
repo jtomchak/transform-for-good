@@ -17,7 +17,7 @@ const Footer = styled.footer`
   padding: 30px 100px;
   text-align: right;
   width: 100vw;
-  border-top: 1px solid #dc5f53;
+  border-top: 1px solid #4d4e4f;
   display: flex;
   justify-content: space-between;
 `;

@@ -3,8 +3,10 @@ export { default as theme } from "./theme";
 import { Head, Notes, Image } from "mdx-deck";
 import { Split, SplitRight, Invert } from "mdx-deck/layouts";
 import { CodeSurfer } from "mdx-deck-code-surfer";
+import { bounce } from "react-animations";
 
 import { Layout, CMacro, BabelConfig, IDXDemo } from "./components";
+import { BouncyDiv, MovingDiv, RotateDiv } from "./components/annimation";
 
 <Head>
   <title>Transform The Future</title>
@@ -21,23 +23,33 @@ import { Layout, CMacro, BabelConfig, IDXDemo } from "./components";
     flexDirection: "row-reverse"
   }}
 >
-  <div
-    style={{
-      height: "100%"
-    }}
-  >
-    <Image
+  <RotateDiv>
+    <div
       style={{
-        padding: "60px",
-        margin: "auto",
-        width: "100%",
-        maxHeight: "100%",
-        objectFit: "contain"
+        height: "100%"
       }}
-      src={require("file-loader!./assets/bholt_space.png")}
-    />
-  </div>
+    >
+      <Image
+        style={{
+          padding: "60px",
+          margin: "auto",
+          width: "100%",
+          maxHeight: "100%",
+          objectFit: "contain"
+        }}
+        src={require("file-loader!./assets/bholt_space.png")}
+      />
+    </div>
+  </RotateDiv>
 </div>
+
+---
+
+### Jesse Tomchak
+
+- 🎙JavaScript To Elm
+- @jtomchak
+- [transform-for-good.netlify.com](https://transform-for-good.netlify.com/)
 
 <Notes>
 Jesse Tomchak
